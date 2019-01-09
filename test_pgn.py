@@ -8,7 +8,7 @@ import scipy.misc
 import scipy.io as sio
 import cv2
 from glob import glob
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
 
 import tensorflow as tf
 import numpy as np
