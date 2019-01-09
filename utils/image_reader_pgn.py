@@ -127,9 +127,9 @@ def read_labeled_image_reverse_list(data_dir, data_list):
             image, mask, mask_rev = line.strip("\n").split(' ')
         except ValueError: # Adhoc for test.
             image = mask = mask_rev = line.strip("\n")
-        images.append(data_dir + image)
-        masks.append(data_dir + mask)
-        masks_rev.append(data_dir + mask_rev)
+        images.append(os.path.join(data_dir, image)) # (data_dir + image)
+        masks.append(os.path.join(data_dir, mask)) # data_dir + mask)
+        masks_rev.append(os.path.join(data_dir, mask_rev)) # data_dir + mask_rev)
     return images, masks, masks_rev
 
 
@@ -138,7 +138,7 @@ def read_edge_list(data_dir, data_id_list):
     edges = []
     for line in f:
         edge = line.strip("\n")
-        edges.append(data_dir + '/edges/' + edge + '.png')
+        edges.append(data_dir + '/edges/' + edge + '-label.jpg.jpg')
     return edges
 
 def read_images_from_disk(input_queue, input_size, random_scale, random_mirror=False): # optional pre-processing arguments
