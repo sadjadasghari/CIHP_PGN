@@ -7,16 +7,16 @@ import random
 from utils import *
 
 # Set gpus
-gpus = [0] 
+gpus = [0,1]
 os.environ["CUDA_VISIBLE_DEVICES"]=','.join([str(i) for i in gpus])
 num_gpus = len(gpus) # number of GPUs to use
 
 ### parameters setting
-DATA_DIR = './datasets/CIHP'
-LIST_PATH = './datasets/CIHP/list/train_rev.txt'
-DATA_ID_LIST = './datasets/CIHP/list/train_id.txt'
+DATA_DIR = './datasets/PPE' # CIHP' #
+LIST_PATH = './datasets/PPE/list/train_rev.txt'
+DATA_ID_LIST = './datasets/PPE/list/train_id.txt'
 SNAPSHOT_DIR = './checkpoint/CIHP_pgn'
-LOG_DIR = './logs/CIHP_pgn'
+LOG_DIR = './logs/PPE' # CIHP_pgn' #
 
 N_CLASSES = 20
 INPUT_SIZE = (512, 512)
