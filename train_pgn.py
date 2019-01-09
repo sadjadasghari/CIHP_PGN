@@ -18,7 +18,7 @@ DATA_ID_LIST = './datasets/PPE/list/train_id.txt'
 SNAPSHOT_DIR = './checkpoint/CIHP_pgn'
 LOG_DIR = './logs/PPE' # CIHP_pgn' #
 
-N_CLASSES = 20
+N_CLASSES = 5
 INPUT_SIZE = (512, 512)
 BATCH_I = 1
 BATCH_SIZE = BATCH_I * len(gpus)
