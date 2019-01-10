@@ -11,7 +11,7 @@ for i = 1:length(list);
     len = sz(2);
     if imname(len-9:len) == "-label.jpg";
         
-        fprintf('img: %d\n', i);
+        % fprintf('img: %d\n', i);
         img_n = [datadir,list{i}];
         im = imread(img_n);
         [row, col] = size(im);

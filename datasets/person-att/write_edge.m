@@ -21,8 +21,8 @@ for i = 1:length(list);
         instance_contour = uint8(imgradient(instance_map) > 0);
 
 
-        imwrite(instance_contour, fullfile(output_root, [imname '.jpg']));
-        imwrite(instance_contour*255, fullfile(vis_output_root, [imname '.jpg']));
+        imwrite(instance_contour, fullfile(output_root, [imname '.png']));
+        imwrite(instance_contour*255, fullfile(vis_output_root, [imname '.png']));
     %     imshow(instance_contour);
 
     end
