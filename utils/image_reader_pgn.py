@@ -138,7 +138,7 @@ def read_edge_list(data_dir, data_id_list):
     edges = []
     for line in f:
         edge = line.strip("\n")
-        edges.append(data_dir + '/edges/' + edge + '-label.jpg.jpg')
+        edges.append(data_dir + '/edges/' + edge + '.png') # -label.jpg
     return edges
 
 def read_images_from_disk(input_queue, input_size, random_scale, random_mirror=False): # optional pre-processing arguments
@@ -170,7 +170,7 @@ def read_images_from_disk(input_queue, input_size, random_scale, random_mirror=F
     img -= IMG_MEAN
     label = tf.image.decode_png(label_contents, channels=1)
     label_rev = tf.image.decode_png(label_contents_rev, channels=1)
-
+    # tf.image.decode_jpeg for jpg images
     edge = tf.image.decode_png(edge_contents, channels=1)
 
     if input_size is not None:

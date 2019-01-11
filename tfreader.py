@@ -2,7 +2,21 @@ import tensorflow as tf
 
 filenames = tf.placeholder(tf.string, shape=[None])
 dataset = tf.data.TFRecordDataset(filenames)
-dataset = dataset.map()  # Parse the record into tensors.
+map_fun = lambda example: tf.parse_single_example(
+                    example,
+                    features={
+                        'image/encoded': tf.FixedLenFeature([], tf.string),
+                        'image/filename': tf.FixedLenFeature([], tf.string),
+                        'image/ID': tf.FixedLenFeature([], tf.string),
+                        'image/format': tf.FixedLenFeature([], tf.string),
+                        'image/height': tf.FixedLenFeature([], tf.int64),
+                        'image/width': tf.FixedLenFeature([], tf.int64),
+                        'image/channels': tf.FixedLenFeature([], tf.int64),
+                        'image/colorspace': tf.FixedLenFeature([], tf.string),
+                        'image/segmentation/class/encoded': tf.FixedLenFeature([], tf.string),
+                        'image/segmentation/class/format': tf.FixedLenFeature([], tf.string),
+                        })
+dataset = dataset.map(map_fun)  # Parse the record into tensors.
 dataset = dataset.repeat()  # Repeat the input indefinitely.
 dataset = dataset.batch(32)
 iterator = dataset.make_initializable_iterator()
